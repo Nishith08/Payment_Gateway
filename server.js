@@ -43,7 +43,7 @@ app.post("/create-payment", async (req, res) => {
       //console.log("Payment successful:", paymentIntent.id);
 
       // 2️⃣ Sync with CRM (Odoo)
-      const crmResponse = await axios.post("http://localhost:5000/sync-crm", {
+      const crmResponse = await axios.post("https://payment-gateway-p1vh.onrender.com/sync-crm", {
         name: customerName,
         email,
         service: serviceType
@@ -62,7 +62,7 @@ app.post("/create-payment", async (req, res) => {
       console.log("CRM Sync successful:", crmResponse.data);
 
       // 3️⃣ Store Subscription in Database
-      const subscriptionResponse = await axios.post("http://localhost:5000/store-subscription", {
+      const subscriptionResponse = await axios.post("https://payment-gateway-p1vh.onrender.com/store-subscription", {
           customerName,
           email,
           serviceType,
